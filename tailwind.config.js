@@ -4,9 +4,9 @@ module.exports = {
   content: ["./index.html", "./src/js/main.js"],
   theme: {
     extend: {
-      colors: {
-        "main-yellow": "rgb(195, 146, 43)"
-      },
+      // colors: {
+      //   "main-yellow": "rgb(195, 146, 43)"
+      // },
     },
   },
   plugins: [],

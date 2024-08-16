@@ -1,17 +1,16 @@
-//!-------------------------------------------------Global Variables Start------------------------------------------>
-//!Change SVG Color
-let svgIcons = document.querySelectorAll('#about svg')
-
-//!Navbar Buttons
+//*-------------------------------------------------Global Variables Start------------------------------------------>
+//!-------------------------SVG Icon--------------------------------->
+let svgIcons = document.querySelectorAll('#about svg , footer svg')
+//!-------------------------Navbar Buttons--------------------------->
 const openBTN = document.getElementById('nav-open')
 const closeBTN = document.getElementById('nav-close')
 const navList = document.getElementById('nav-list')
-//Toggle Dark And Light Mode 
+//!-------------------------Toggle Dark And Light Mode -------------->
 let mode = localStorage.getItem('Current Mode');
 const windowsMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const btnToggler = document.getElementsByClassName('togglerBtn');
 const toggleModeArr = Array.from(btnToggler);
-//!-------------------------------------------------Global Variables End------------------------------------------>
+//*-------------------------------------------------Global Variables End------------------------------------------>
 document.addEventListener('DOMContentLoaded', () => {
     changeSVGColor()
     closeBTN.classList.add('hidden')
@@ -27,7 +26,7 @@ function changeSVGColor() {
         })
     }
 }
-//Toggle Dark And Light Mode 
+//!--------Toggle Dark And Light Mode 
 if (mode === null) {
     mode = windowsMode ? 'dark' : 'light';
 }
@@ -41,10 +40,7 @@ toggleModeArr.map((el) => {
         document.documentElement.classList.toggle('dark');
     });
 });
-
-
-
-
+//! Navbar Toggler Buttons
 openBTN.addEventListener('click', () => {
     navList.classList.add('h-screen')
     closeBTN.classList.remove('hidden')
@@ -56,7 +52,8 @@ closeBTN.addEventListener('click', () => {
     openBTN.classList.remove('hidden')
 })
 
-//Slider
+//*---------------------------------------Sliders Start-------------------->
+//!---Main Slider Start--------------->
 var swiper = new Swiper(".slider", {
     pagination: {
         clickable: true,
@@ -67,3 +64,39 @@ var swiper = new Swiper(".slider", {
     },
 
 });
+//!---Main Slider End----------------->
+
+//!---Projects Slider Start----------->
+var swiper = new Swiper(".mySwiper", {
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+    autoplay: {
+        delay: 1500,
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+
+});
+//!---Projects Slider End------------->
+//*---------------------------------------Sliders End---------------------->
+
+// !AOS Library Init
+AOS.init()
+
+//!Get Current Year Dynamically And Add It In Footer
+const currentYear = new Date().getFullYear();
+const footerContent = document.querySelector('footer span')
+footerContent.innerHTML = `جميع الحقوق محفوظة لشركة وادي النيل للإنشاءات ${currentYear}©️`
+// TODO---------------------------------------------------- Create the functions -------------------------->>>>><<<<<<<
